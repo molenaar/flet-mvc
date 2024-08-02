@@ -137,6 +137,7 @@ class TestModel(FletModel):
                 ref=self.DataRow,
                 selected=True,
                 on_select_changed=lambda e: print(f"row select changed: {e.data}"),
+                cells=[],  # cells are set in the DataRow node
             ),
         )
         return rows
@@ -430,7 +431,9 @@ class MyApp extends StatelessWidget {
         # I recommend using it as @data.RefOnly instead. but showing that can still work
         # with set valueon the controller at button_clicked method.
         # Actually just use flet-mvc alert instead.
-        return None
+        # return None
+        return ft.Text("50.SnackBar. Imagine this is an error. What would you like me to do?")
+    
 
     @data
     def Switch(self):

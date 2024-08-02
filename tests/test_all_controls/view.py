@@ -27,16 +27,18 @@ class TestView(FletView):
                 ft.TextButton("Ignore", on_click=controller.close_banner),
                 ft.TextButton("Cancel", on_click=controller.close_banner),
             ],
+            content=ft.Text("This is a banner!"),
         )
 
         self.bottom_sheet = ft.BottomSheet(
             ref=model.BottomSheet,
             open=False,
             on_dismiss=controller.bs_dismissed,
+            content=ft.Text("This is a bottom sheet!"),
         )
         self.snack_bar = ft.SnackBar(
             ref=model.SnackBar,
-            content=ft.Text("Hello, world!"),
+            content=ft.Text("This is a snackbar!"),
             action="Alright!",
         )
 
@@ -68,6 +70,7 @@ class TestView(FletView):
                         reverse_duration=100,
                         switch_in_curve=ft.AnimationCurve.BOUNCE_OUT,
                         switch_out_curve=ft.AnimationCurve.BOUNCE_IN,
+                        content=[]
                     ),
                     ft.ElevatedButton("Animate!", on_click=controller.animate),
 
@@ -111,7 +114,7 @@ class TestView(FletView):
                             ft.DataColumn(ft.Text("First name")),
                             ft.DataColumn(ft.Text("Last name")),
                             ft.DataColumn(ft.Text("Age"), numeric=True),
-                        ],
+                        ]
                     ),
 
                     # 13. Divider
@@ -127,6 +130,7 @@ class TestView(FletView):
                                     ft.Draggable(
                                         ref=model.Draggable,
                                         group="color",
+                                        content=model.Draggable(), # Provide the content from the model
                                         content_feedback=ft.Container(
                                             width=20,
                                             height=20,
@@ -162,6 +166,7 @@ class TestView(FletView):
                                     ft.DragTarget(
                                         ref=model.DragTarget,
                                         group="color",
+                                        content=model.DragTarget(),
                                         on_will_accept=controller.drag_will_accept,
                                         on_accept=controller.drag_accept,
                                         on_leave=controller.drag_leave,
@@ -473,7 +478,8 @@ class TestView(FletView):
                     ft.Text("\n61. WindowDragArea"),
                     ft.WindowDragArea(
                         ref=model.WindowDragArea,
-                        expand=True
+                        expand=True,
+                        content=model.WindowDragArea()
                     ),
 
                     # 62. Canvas
