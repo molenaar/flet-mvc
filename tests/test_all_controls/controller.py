@@ -89,20 +89,9 @@ class TestController(FletController):
 
     def button_clicked(self, e):
         """50. Snackbar"""
-        # Ensure snack_bar is initialized
-        if self.page.snack_bar is None:
-            self.page.snack_bar = ft.SnackBar(
-                ft.Text("Hello World!"), open=True, duration=5000
-            )
-            self.page.update()
-
-        # self.model.SnackBar.set_value(
-        #     ft.Text(f"Dropdown value is:  {self.model.Dropdown.current.value}")
-        # )
-        self.model.SnackBar.content = ft.Text(
-            f"Dropdown value is:  {self.model.Dropdown.current.value}"
-        )   
-
+        self.model.SnackBar.set_value(
+            ft.Text(f"Dropdown value is:  {self.model.Dropdown.current.value}")
+        )
         self.page.snack_bar.open = True
         self.page.update()
 

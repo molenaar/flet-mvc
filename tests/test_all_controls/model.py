@@ -43,11 +43,29 @@ class TestModel(FletModel):
         """3. Audio | Attribute: src"""
         return "https://luan.xyz/files/audio/ambient_c_motion.mp3"
 
-    @data
+    @property
+    # @data
+    def BannerActions(self):
+        """Actions for the Banner"""
+        return [
+            ft.TextButton("Retry", on_click=self.controller.close_banner),
+            ft.TextButton("Ignore", on_click=self.controller.close_banner),
+            ft.TextButton("Cancel", on_click=self.controller.close_banner),
+        ]
+
+    @property
+    # @data
     def Banner(self):
         """4. Banner | Attribute: content"""
-        return ft.Text(
-            "4. Banner. Imagine this is an error. What would you like me to do?"
+        # return ft.Text(
+        #     "4. Banner. Imagine this is an error. What would you like me to do?"
+        # )
+        return ft.Banner(
+            content=ft.Text(
+                "4. Banner. Imagine this is an error. What would you like me to do?"
+            ),
+            actions=self.BannerActions,
+            open=False,
         )
 
     @data
@@ -433,9 +451,12 @@ class MyApp extends StatelessWidget {
         # Actually just use flet-mvc alert instead.
         # return None
         return ft.SnackBar(
-            ft.Text("50.SnackBar. Imagine this is an error. What would you like me to do?"),
-            open=True,
+            content=ft.Text("Hello, world!"),
+            action="Alright!",
+            open=False,
         )
+        
+    
     
 
     @data

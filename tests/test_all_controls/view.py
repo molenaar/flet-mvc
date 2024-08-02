@@ -7,6 +7,7 @@ import math
 
 class TestView(FletView):
     def __init__(self, controller, model):
+        self.page = controller.page
         self.app_bar = ft.AppBar(
             ref=model.AppBar,
             leading=ft.Icon(ft.icons.PALETTE),
@@ -22,13 +23,13 @@ class TestView(FletView):
             ref=model.Banner,
             bgcolor=ft.colors.AMBER_100,
             leading=ft.Icon(ft.icons.WARNING_AMBER_ROUNDED, color=ft.colors.AMBER, size=40),
-            actions=[
-                ft.TextButton("Retry", on_click=controller.close_banner),
-                ft.TextButton("Ignore", on_click=controller.close_banner),
-                ft.TextButton("Cancel", on_click=controller.close_banner),
-            ],
             content=ft.Text("This is a banner!"),
+            actions=[
+                ft.TextButton("Close", on_click=controller.close_banner),
+            ],
         )
+        self.page.banner = self.banner
+        # self.banner = model.Banner
 
         self.bottom_sheet = ft.BottomSheet(
             ref=model.BottomSheet,
@@ -36,11 +37,12 @@ class TestView(FletView):
             on_dismiss=controller.bs_dismissed,
             content=ft.Text("This is a bottom sheet!"),
         )
+
         self.snack_bar = ft.SnackBar(
             ref=model.SnackBar,
-            content=ft.Text("This is a snackbar! Order: {d.counter}"),
-            action="Alright!",
+            content=ft.Text("This is a snackbar!"),
         )
+        self.page.snack_bar = self.snack_bar
 
         self.fab = ft.FloatingActionButton(
             ref=model.FloatingActionButton,
