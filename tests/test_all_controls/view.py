@@ -38,7 +38,7 @@ class TestView(FletView):
         )
         self.snack_bar = ft.SnackBar(
             ref=model.SnackBar,
-            content=ft.Text("This is a snackbar!"),
+            content=ft.Text("This is a snackbar! Order: {d.counter}"),
             action="Alright!",
         )
 

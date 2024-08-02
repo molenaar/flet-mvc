@@ -432,7 +432,10 @@ class MyApp extends StatelessWidget {
         # with set valueon the controller at button_clicked method.
         # Actually just use flet-mvc alert instead.
         # return None
-        return ft.Text("50.SnackBar. Imagine this is an error. What would you like me to do?")
+        return ft.SnackBar(
+            ft.Text("50.SnackBar. Imagine this is an error. What would you like me to do?"),
+            open=True,
+        )
     
 
     @data
